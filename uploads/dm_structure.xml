@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMLData>
+    <parts>
+        <Properties>
+            <Property name="Module Id" type="TEXT" allow_null="NO" read_only="NO"/>
+            <Property name="Version" type="TEXT" allow_null="NO" read_only="NO"/>
+            <Property name="Study Version" type="STUDY VERSION" default_value="0" allow_null="NO" read_only="NO"/>
+            <Property name="File Type" type="TEXT" default_value="ANSA" accepted_values="'',ANSA,Nastran,LsDyna,PamCrash,Abaqus,Radioss,Ansys,Fluent,Fluent2D,StarCD,Uh3D,Cfd++,OpenFoam,Permas,Moldex3D,TAITHERM,Sestra,Theseus,ScTetra,TAU,CGNS,CGNS2D,Optistruct,Marc,Actran,Impetus" allow_null="YES" read_only="NO"/>
+            <Property name="Representation" type="TEXT" allow_null="YES" read_only="NO"/>
+        </Properties>
+        <Attributes>
+            <Attribute name="Name" type="TEXT"/>
+            <Attribute name="Status" type="TEXT" default_value="WIP" accepted_values="WIP,OK,Warning,Error"/>
+        </Attributes>
+    </parts>
+    <Subsystems>
+        <Properties>
+            <Property name="Module Id" type="TEXT" allow_null="NO" read_only="NO"/>
+            <Property name="Variant" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+            <Property name="Project" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+            <Property name="Release" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+            <Property name="Iteration" type="VERSIONING SCHEME COUNTER" default_value="001" allow_null="NO" read_only="NO" format="%03d"/>
+            <Property name="Loadcase Variant" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+            <Property name="File Type" type="TEXT" default_value="ANSA" accepted_values="ANSA,Nastran,LsDyna,PamCrash,Abaqus,Radioss,Ansys,Fluent,Fluent2D,StarCD,Uh3D,Cfd++,OpenFoam,Permas,Moldex3D,TAITHERM,Sestra,Theseus,ScTetra,TAU,CGNS,CGNS2D,Optistruct,Marc,Actran,Impetus" allow_null="NO" read_only="NO"/>
+            <Property name="Representation" type="TEXT" accepted_values="crash_fe,nvh_fe,dura_fe,lumped_mass,'',Regular,Connecting,Display Model,Reduced Model,SuperElement OP2,SuperElement PCH,SuperElement,FRF Model,Modal Model,RigidBody" allow_null="YES" read_only="NO"/>
+        </Properties>
+        <Attributes>
+            <Attribute name="Name" type="TEXT"/>
+            <Attribute name="Status" type="TEXT" default_value="WIP" accepted_values="WIP,OK,Warning,Error"/>
+        </Attributes>
+    </Subsystems>
+    <Simulation_Model>
+        <Properties>
+            <Property name="Discipline" type="TEXT" default_value="durability" accepted_values="crash,nvh,durability,cfd" allow_null="YES" read_only="NO"/>
+            <Property name="Model Id" type="TEXT" default_value="crash_assembly" accepted_values="crash_assembly,pedestrian_assembly,body,seat_dummy" allow_null="NO" read_only="NO"/>
+            <Property name="Model Variant" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+            <Property name="Project" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+            <Property name="Release" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+            <Property name="Iteration" type="VERSIONING SCHEME COUNTER" default_value="001" allow_null="NO" read_only="NO" format="%03d"/>
+            <Property name="File Type" type="TEXT" default_value="ANSA" accepted_values="ANSA,Nastran,LsDyna,PamCrash,Abaqus,Radioss,Ansys,Fluent,Fluent2D,StarCD,Uh3D,Cfd++,OpenFoam,Permas,Moldex3D,TAITHERM,Sestra,Theseus,ScTetra,TAU,CGNS,CGNS2D,Optistruct,Marc,Actran,Impetus" allow_null="NO" read_only="NO"/>
+            <Property name="File" type="FILE" allow_null="YES" read_only="NO"/>
+        </Properties>
+        <Attributes>
+            <Attribute name="Name" type="TEXT"/>
+            <Attribute name="Status" type="TEXT" default_value="WIP" accepted_values="WIP,OK,Warning,Error"/>
+        </Attributes>
+        <Containing_Items>
+            <Containing_Item type="LoadCase"/>
+            <Containing_Item type="Report"/>
+            <Containing_Item type="Session"/>
+        </Containing_Items>
+        <Rules>
+            <Rule name="Name" discarded_chars="-" generated_value="[Model Id]_[Project]_[Release]_[Model Variant]_[Discipline]_[Iteration]"/>
+            <Rule name="Model Id" accepted_values="crash_assembly,pedestrian_assembly,body,seat_dummy" condition_name="Discipline" condition_value="crash"/>
+            <Rule name="Model Id" accepted_values="trim_body,cavity,nvh_assembly,body" condition_name="Discipline" condition_value="nvh"/>
+            <Rule name="Model Id" accepted_values="body,door,hood,liftgate" condition_name="Discipline" condition_value="durability"/>
+            <Rule name="Model Id" accepted_values="external_aero,underhood,cabin" condition_name="Discipline" condition_value="cfd"/>
+        </Rules>
+    </Simulation_Model>
+    <LoadCase>
+        <Properties>
+            <Property name="Loadcase Id" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+            <Property name="Iteration" type="VERSIONING SCHEME COUNTER" default_value="01" allow_null="NO" read_only="NO" format="%02d"/>
+            <Property name="Simulation_Model" type="OBJECT ID" allow_null="YES" read_only="NO"/>
+            <Property name="File Type" type="TEXT" default_value="ANSA" accepted_values="ANSA,Nastran,LsDyna,PamCrash,Abaqus,Radioss,Ansys,Fluent,Fluent2D,StarCD,Uh3D,Cfd++,OpenFoam,Permas,Moldex3D,TAITHERM,Sestra,Theseus,ScTetra,TAU,CGNS,CGNS2D,Optistruct,Marc,Actran,Impetus" allow_null="NO" read_only="NO"/>
+            <Property name="File" type="FILE" allow_null="YES" read_only="NO"/>
+        </Properties>
+        <Attributes>
+            <Attribute name="Name" type="TEXT"/>
+            <Attribute name="Status" type="TEXT" default_value="WIP" accepted_values="WIP,OK,Warning,Error"/>
+        </Attributes>
+        <Containing_Items>
+            <Containing_Item type="Simulation_Run"/>
+            <Containing_Item type="Session"/>
+            <Containing_Item type="Report"/>
+        </Containing_Items>
+        <Rules>
+            <Rule name="Name" discarded_chars="-" generated_value="[Loadcase Id]_[Iteration]"/>
+        </Rules>
+    </LoadCase>
+    <Simulation_Run>
+        <Properties>
+            <Property name="Iteration" type="VERSIONING SCHEME COUNTER" default_value="01" allow_null="NO" read_only="NO" format="%02d"/>
+            <Property name="Simulation_Model" type="OBJECT ID" allow_null="NO" read_only="NO"/>
+            <Property name="LoadCase" type="OBJECT ID" allow_null="NO" read_only="NO"/>
+            <Property name="File Type" type="TEXT" default_value="ANSA" accepted_values="ANSA,Nastran,LsDyna,PamCrash,Abaqus,Radioss,Ansys,Fluent,Fluent2D,StarCD,Uh3D,Cfd++,OpenFoam,Permas,Moldex3D,TAITHERM,Sestra,Theseus,ScTetra,TAU,CGNS,CGNS2D,Optistruct,Marc,Actran,Impetus" allow_null="NO" read_only="NO"/>
+            <Property name="File" type="FILE" allow_null="NO" read_only="NO"/>
+        </Properties>
+        <Attributes>
+            <Attribute name="Name" type="TEXT"/>
+            <Attribute name="Target Point" type="TEXT"/>
+            <Attribute name="Status" type="TEXT" default_value="WIP" accepted_values="WIP,OK,Warning,Error"/>
+        </Attributes>
+        <Containing_Items>
+            <Containing_Item type="Session"/>
+            <Containing_Item type="Report"/>
+        </Containing_Items>
+        <Rules>
+            <Rule name="Name" discarded_chars="-" generated_value="[LoadCase.Loadcase Id]_[Simulation_Model.Project]_[Simulation_Model.Release]_[Simulation_Model.Model Variant]_[Simulation_Model.Iteration]_[LoadCase.Iteration]_[Iteration]"/>
+        </Rules>
+    </Simulation_Run>
+    <Report>
+        <Properties>
+            <Property name="Type" type="TEXT" default_value="Image" accepted_values="Image,Video,Curve,MetaProject,Presentation,Table,Spreadsheet,KeyValue,Annotation,PDF,HTML,3dModel,Plot" allow_null="NO" read_only="NO"/>
+            <Property name="Report_Parameters" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+            <Property name="Name" type="TEXT" allow_null="NO" read_only="NO"/>
+            <Property name="LoadCase" type="OBJECT ID" allow_null="YES" read_only="NO"/>
+            <Property name="Simulation_Run" type="OBJECT ID" allow_null="YES" read_only="NO"/>
+            <Property name="Simulation_Model" type="OBJECT ID" allow_null="YES" read_only="NO"/>
+            <Property name="Predictor" type="OBJECT ID" allow_null="YES" read_only="NO"/>
+            <Property name="File" type="FILE" allow_null="YES" read_only="NO"/>
+        </Properties>
+        <Attributes>
+            <Attribute name="Value" type="TEXT"/>
+        </Attributes>
+    </Report>
+    <Session>
+        <Properties>
+            <Property name="Name" type="TEXT" allow_null="NO" read_only="NO"/>
+            <Property name="LoadCase" type="OBJECT ID" allow_null="YES" read_only="NO"/>
+            <Property name="Simulation_Run" type="OBJECT ID" allow_null="YES" read_only="NO"/>
+            <Property name="Simulation_Model" type="OBJECT ID" allow_null="YES" read_only="NO"/>
+            <Property name="File" type="FILE" allow_null="NO" read_only="NO"/>
+        </Properties>
+    </Session>
+    <Changeset>
+        <Properties>
+            <Property name="Revision" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+            <Property name="File" type="FILE" allow_null="NO" read_only="NO"/>
+        </Properties>
+    </Changeset>
+    <Predictor>
+        <Properties>
+            <Property name="Output Measure" type="TEXT" allow_null="NO" read_only="NO"/>
+            <Property name="Group Name" type="TEXT" allow_null="NO" read_only="NO"/>
+            <Property name="Iteration" type="VERSIONING SCHEME COUNTER" default_value="001" allow_null="NO" read_only="NO" format="%03d"/>
+            <Property name="Sub-Type" type="TEXT" default_value="DV based predictor" accepted_values="Feature based predictor,DV based predictor,DV based predictor Kriging" allow_null="NO" read_only="NO"/>
+            <Property name="File" type="FILE" allow_null="NO" read_only="NO"/>
+        </Properties>
+        <Attributes>
+            <Attribute name="Name" type="TEXT"/>
+            <Attribute name="Status" type="TEXT" accepted_values="Training,OK,Pending Verification,Failed Verification,Error in Training,''" colors_for_accepted_values="gray,green,orange,red,magenta,white"/>
+        </Attributes>
+        <Containing_Items>
+            <Containing_Item type="Report"/>
+        </Containing_Items>
+        <Rules>
+            <Rule name="Name" discarded_chars="-" generated_value="[Sub-Type]_[Group Name]_[Iteration]_[Output Measure]"/>
+        </Rules>
+    </Predictor>
+    <Optimization_Study>
+        <Properties>
+            <Property name="Name" type="TEXT" allow_null="NO" read_only="NO"/>
+            <Property name="Iteration" type="VERSIONING SCHEME COUNTER" default_value="001" allow_null="NO" read_only="NO" format="%03d"/>
+            <Property name="Algorithm" type="TEXT" default_value="IPOPT" accepted_values="IPOPT,Simulated Annealing" allow_null="NO" read_only="NO"/>
+            <Property name="Method" type="TEXT" default_value="RSM" accepted_values="RSM,DIRECT" allow_null="NO" read_only="NO"/>
+            <Property name="File" type="FILE" allow_null="YES" read_only="NO"/>
+        </Properties>
+        <Rules>
+            <Rule name="Method" accepted_values="RSM" condition_name="Algorithm" condition_value="IPOPT"/>
+            <Rule name="Method" accepted_values="RSM,DIRECT" condition_name="Algorithm" condition_value="Simulated Annealing"/>
+        </Rules>
+    </Optimization_Study>
+    <Modular_Environment_Profile>
+        <Properties>
+            <Property name="Discipline" type="TEXT" accepted_values="crash,nvh,durability,cfd" allow_null="NO" read_only="NO"/>
+            <Property name="Target Solver" type="TEXT" accepted_values="Nastran,LsDyna,PamCrash,Abaqus,Radioss,Ansys,Fluent,Fluent2D,StarCD,Uh3D,Cfd++,OpenFoam,Permas,Moldex3D,TAITHERM,Sestra,Theseus,ScTetra,TAU,CGNS,CGNS2D,Optistruct,Marc,Actran,Impetus" allow_null="NO" read_only="NO"/>
+            <Property name="Version" type="VERSIONING SCHEME COUNTER" default_value="001" allow_null="NO" read_only="NO" format="%03d"/>
+            <Property name="File" type="FILE" allow_null="NO" read_only="NO"/>
+        </Properties>
+        <Rules>
+            <Rule name="Name" discarded_chars="-" generated_value="[Discipline]_[Target Solver]_[Version]"/>
+            <Rule name="Target Solver" accepted_values="LsDyna,PamCrash,Abaqus,Radioss,Impetus" condition_name="Discipline" condition_value="crash"/>
+            <Rule name="Target Solver" accepted_values="Nastran,Ansys,Optistruct,Actran" condition_name="Discipline" condition_value="nvh"/>
+            <Rule name="Target Solver" accepted_values="Abaqus,Nastran,Radioss,Ansys,Permas,Marc,Moldex3D,Sestra" condition_name="Discipline" condition_value="durability"/>
+            <Rule name="Target Solver" accepted_values="Cfd++,Fluent,Fluent2D,StarCD,Uh3D,OpenFoam,ScTetra,TAU,CGNS,CGNS2D,Theseus,TAITHERM" condition_name="Discipline" condition_value="cfd"/>
+        </Rules>
+    </Modular_Environment_Profile>
+    <Build_Action>
+        <Properties>
+            <Property name="Entity Type" type="TEXT" default_value="-" accepted_values="Parts,Subsystems,Library_Items,Simulation_Models,Loadcases,Simulation_Runs,Subsystem_Adapters,Simulation_Model_Adapters,Loadcase_Adapters,Simulation_Run_Adapters,-" allow_null="YES" read_only="NO"/>
+            <Property name="Type" type="TEXT" accepted_values="Built_In,Script,Check_Template" allow_null="NO" read_only="YES"/>
+            <Property name="Name" type="TEXT" allow_null="NO" read_only="NO"/>
+            <Property name="Iteration" type="VERSIONING SCHEME COUNTER" default_value="001" allow_null="NO" read_only="NO" format="%03d"/>
+            <Property name="File" type="FILE" allow_null="NO" read_only="NO"/>
+        </Properties>
+    </Build_Action>
+    <Build_Process>
+        <Properties>
+            <Property name="Entity Type" type="TEXT" accepted_values="Parts,Subsystems,Library_Items,Simulation_Models,Loadcases,Simulation_Runs,Subsystem_Adapters,Simulation_Model_Adapters,Loadcase_Adapters,Simulation_Run_Adapters" allow_null="NO" read_only="YES"/>
+            <Property name="Name" type="TEXT" allow_null="NO" read_only="NO"/>
+            <Property name="Iteration" type="VERSIONING SCHEME COUNTER" default_value="001" allow_null="NO" read_only="NO" format="%03d"/>
+            <Property name="File" type="FILE" allow_null="NO" read_only="NO"/>
+        </Properties>
+    </Build_Process>
+    <Build_Setup>
+        <Properties>
+            <Property name="Entity Type" type="TEXT" accepted_values="Parts,Subsystems,Library_Items,Simulation_Models,Loadcases,Simulation_Runs,Subsystem_Adapters,Simulation_Model_Adapters,Loadcase_Adapters,Simulation_Run_Adapters" allow_null="NO" read_only="YES"/>
+            <Property name="Discipline" type="TEXT" accepted_values="crash,nvh,durability,cfd,cross_discipline" allow_null="NO" read_only="NO"/>
+            <Property name="Target Solver" type="TEXT" accepted_values="Nastran,LsDyna,PamCrash,Abaqus,Radioss,Ansys,Fluent,Fluent2D,StarCD,Uh3D,Cfd++,OpenFoam,Permas,Moldex3D,TAITHERM,Sestra,Theseus,ScTetra,TAU,CGNS,CGNS2D,Optistruct,Marc,Actran,Impetus,cross_target_solver" allow_null="NO" read_only="NO"/>
+            <Property name="Iteration" type="VERSIONING SCHEME COUNTER" default_value="001" allow_null="NO" read_only="NO" format="%03d"/>
+            <Property name="File" type="FILE" allow_null="NO" read_only="NO"/>
+        </Properties>
+        <Attributes>
+            <Attribute name="Name" type="TEXT"/>
+        </Attributes>
+    </Build_Setup>
+    <DOE_Study>
+        <Properties>
+            <Property name="Optimization Task Name" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+            <Property name="Iteration" type="VERSIONING SCHEME COUNTER" default_value="0001" allow_null="NO" read_only="NO" format="%04d"/>
+            <Property name="File" type="FILE" allow_null="YES" read_only="NO"/>
+        </Properties>
+        <Attributes>
+            <Attribute name="Name" type="TEXT" default_value="-"/>
+        </Attributes>
+        <Rules>
+            <Rule name="Name" discarded_chars="-" generated_value="[Optimization Task Name]_[Iteration]"/>
+        </Rules>
+    </DOE_Study>
+    <LIBRARY_ITEMS>
+        <LIBRARYITEM type="Simulation_Configuration_Table">
+            <Properties>
+                <Property name="Project" type="TEXT" allow_null="NO" read_only="NO"/>
+                <Property name="Release" type="TEXT" allow_null="NO" read_only="NO"/>
+                <Property name="Version" type="VERSIONING SCHEME COUNTER" default_value="01" allow_null="NO" read_only="NO" format="%02d"/>
+                <Property name="Name" type="TEXT" allow_null="NO" read_only="NO"/>
+                <Property name="File" type="FILE" allow_null="NO" read_only="NO"/>
+            </Properties>
+            <Attributes>
+                <Attribute name="Status" type="TEXT" default_value="WIP" accepted_values="WIP,OK,Warning,Error"/>
+            </Attributes>
+        </LIBRARYITEM>
+        <LIBRARYITEM type="Loadcase_Header">
+            <Properties>
+                <Property name="Project" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+                <Property name="Release" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+                <Property name="Model Variant" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+                <Property name="Loadcase Variant" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+                <Property name="Iteration" type="VERSIONING SCHEME COUNTER" default_value="01" allow_null="NO" read_only="NO" format="%02d"/>
+                <Property name="Name" type="TEXT" default_value="Loadcase_Header" allow_null="NO" read_only="NO"/>
+                <Property name="File" type="FILE" allow_null="NO" read_only="NO"/>
+            </Properties>
+            <Attributes>
+                <Attribute name="Status" type="TEXT" default_value="WIP" accepted_values="WIP,OK,Warning,Error"/>
+            </Attributes>
+        </LIBRARYITEM>
+        <LIBRARYITEM type="Target_Points">
+            <Properties>
+                <Property name="Loadcase Id" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+                <Property name="Project" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+                <Property name="Release" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+                <Property name="Model Variant" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+                <Property name="Iteration" type="VERSIONING SCHEME COUNTER" default_value="01" allow_null="NO" read_only="NO" format="%02d"/>
+                <Property name="File" type="FILE" allow_null="NO" read_only="NO"/>
+            </Properties>
+            <Attributes>
+                <Attribute name="Status" type="TEXT" default_value="WIP" accepted_values="WIP,OK,Warning,Error"/>
+            </Attributes>
+            <Rules>
+                <Rule name="Name" discarded_chars="-" generated_value="[Loadcase Id]_[Project]_[Release]_[Model Variant]_[Iteration]"/>
+            </Rules>
+        </LIBRARYITEM>
+        <LIBRARYITEM type="Loadcase_Template">
+            <Properties>
+                <Property name="Loadcase Id" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+                <Property name="Iteration" type="VERSIONING SCHEME COUNTER" default_value="01" allow_null="NO" read_only="NO" format="%02d"/>
+                <Property name="File Type" type="TEXT" default_value="ANSA" accepted_values="ANSA,Nastran,LsDyna,PamCrash,Abaqus,Radioss,Ansys,Fluent,Fluent2D,StarCD,Uh3D,Cfd++,OpenFoam,Permas,Moldex3D,TAITHERM,Sestra,Theseus,ScTetra,TAU,CGNS,CGNS2D,Optistruct,Marc,Actran,Impetus" allow_null="NO" read_only="NO"/>
+                <Property name="File" type="FILE" allow_null="YES" read_only="NO"/>
+            </Properties>
+            <Attributes>
+                <Attribute name="Name" type="TEXT"/>
+                <Attribute name="Status" type="TEXT" default_value="WIP" accepted_values="WIP,OK,Warning,Error"/>
+            </Attributes>
+            <Rules>
+                <Rule name="Name" discarded_chars="-" generated_value="[Loadcase Id]_[Iteration]"/>
+            </Rules>
+        </LIBRARYITEM>
+        <LIBRARYITEM type="Library_File">
+            <Properties>
+                <Property name="Type" type="TEXT" accepted_values="BARRIER,CONTROL_CARDS,DUMMY,FRICTION,GRAVITY,GROUND,HEADER,IMPACTOR,INSTRUMENTATION,LOAD_CURVES,MATERIAL_DATABASE,SECTION_DATABASE" allow_null="NO" read_only="NO"/>
+                <Property name="Sub-Type" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+                <Property name="Version" type="VERSIONING SCHEME COUNTER" default_value="01" allow_null="NO" read_only="NO" format="%02d"/>
+                <Property name="Name" type="TEXT" allow_null="NO" read_only="NO"/>
+                <Property name="File" type="FILE" allow_null="NO" read_only="NO"/>
+            </Properties>
+            <Attributes>
+                <Attribute name="Status" type="TEXT" default_value="WIP" accepted_values="WIP,OK,Warning,Error"/>
+            </Attributes>
+        </LIBRARYITEM>
+        <LIBRARYITEM type="Loadcase_File">
+            <Properties>
+                <Property name="Type" type="TEXT" accepted_values="ADDED_MASS,BARRIER_POSITIONED,CONTACTS,CONTROL_CARDS,CROSS_SECTIONS,DUMMY_POSITIONED,GROUND_POSITIONED,HEADER,INSTRUMENTATION,INVEL,LOADS,PARAMETERS,SENSORS,TRANSFORMATION" allow_null="NO" read_only="NO"/>
+                <Property name="Sub-Type" type="TEXT" default_value="-" allow_null="NO" read_only="NO"/>
+                <Property name="Project" type="TEXT" allow_null="NO" read_only="NO"/>
+                <Property name="Release" type="TEXT" allow_null="NO" read_only="NO"/>
+                <Property name="Model Variant" type="TEXT" allow_null="NO" read_only="NO"/>
+                <Property name="Version" type="VERSIONING SCHEME COUNTER" default_value="01" allow_null="NO" read_only="NO" format="%02d"/>
+                <Property name="Name" type="TEXT" allow_null="NO" read_only="NO"/>
+                <Property name="File" type="FILE" allow_null="NO" read_only="NO"/>
+            </Properties>
+            <Attributes>
+                <Attribute name="Status" type="TEXT" default_value="WIP" accepted_values="WIP,OK,Warning,Error"/>
+            </Attributes>
+        </LIBRARYITEM>
+        <LIBRARYITEM type="Display_Style">
+            <Properties>
+                <Property name="Version" type="VERSIONING SCHEME COUNTER" default_value="01" allow_null="NO" read_only="NO" format="%02d"/>
+                <Property name="Name" type="TEXT" allow_null="NO" read_only="NO"/>
+                <Property name="Discipline" type="TEXT" default_value="durability" accepted_values="crash,nvh,durability,cfd" allow_null="YES" read_only="NO"/>
+                <Property name="File" type="FILE" allow_null="NO" read_only="NO"/>
+            </Properties>
+        </LIBRARYITEM>
+    </LIBRARY_ITEMS>
+    <FEATURE_ITEMS>
+        <FEATUREITEM type="Feature">
+            <Properties>
+                <Property name="Module Id" type="TEXT" allow_null="NO" read_only="NO"/>
+                <Property name="Version" type="TEXT" default_value="0" allow_null="NO" read_only="NO"/>
+                <Property name="Study Version" type="STUDY VERSION" default_value="0" allow_null="YES" read_only="NO"/>
+                <Property name="File Type" type="TEXT" default_value="ANSA" allow_null="NO" read_only="YES"/>
+                <Property name="Representation" type="TEXT" allow_null="NO" read_only="NO"/>
+                <Property name="File" type="FILE" allow_null="YES" read_only="NO"/>
+            </Properties>
+            <Attributes>
+                <Attribute name="Name" type="TEXT"/>
+                <Attribute name="Type" type="TEXT" default_value="Bolt" accepted_values="Bolt,Nut,Clip,Spot,Rivet,Screw,Embedded Clip,Other"/>
+                <Attribute name="length" type="DOUBLE"/>
+                <Attribute name="d1" type="DOUBLE"/>
+                <Attribute name="d2" type="DOUBLE"/>
+                <Attribute name="d3" type="DOUBLE"/>
+            </Attributes>
+        </FEATUREITEM>
+        <FEATUREITEM type="Fastener">
+            <Properties>
+                <Property name="Module Id" type="TEXT" allow_null="NO" read_only="NO"/>
+                <Property name="Version" type="TEXT" default_value="0" allow_null="NO" read_only="NO"/>
+                <Property name="Study Version" type="STUDY VERSION" default_value="0" allow_null="YES" read_only="NO"/>
+                <Property name="File Type" type="TEXT" default_value="ANSA" allow_null="NO" read_only="YES"/>
+                <Property name="Representation" type="TEXT" allow_null="NO" read_only="NO"/>
+                <Property name="File" type="FILE" allow_null="YES" read_only="NO"/>
+            </Properties>
+            <Attributes>
+                <Attribute name="Name" type="TEXT"/>
+                <Attribute name="Type" type="TEXT" default_value="Bolt" accepted_values="Bolt,Nut,Clip,Spot,Rivet,Screw,Embedded Clip,Other"/>
+                <Attribute name="length" type="DOUBLE"/>
+                <Attribute name="d1" type="DOUBLE"/>
+                <Attribute name="d2" type="DOUBLE"/>
+                <Attribute name="d3" type="DOUBLE"/>
+            </Attributes>
+        </FEATUREITEM>
+        <FEATUREITEM type="Stamp">
+            <Properties>
+                <Property name="Module Id" type="TEXT" allow_null="NO" read_only="NO"/>
+                <Property name="Version" type="TEXT" default_value="0" allow_null="NO" read_only="NO"/>
+                <Property name="Study Version" type="STUDY VERSION" default_value="0" allow_null="NO" read_only="NO"/>
+                <Property name="File Type" type="TEXT" default_value="ANSA" allow_null="NO" read_only="YES"/>
+                <Property name="Representation" type="TEXT" allow_null="YES" read_only="NO"/>
+                <Property name="File" type="FILE" allow_null="YES" read_only="NO"/>
+            </Properties>
+            <Attributes>
+                <Attribute name="Name" type="TEXT"/>
+                <Attribute name="Size" type="DOUBLE" default_value="0."/>
+                <Attribute name="Height" type="DOUBLE" default_value="0."/>
+                <Attribute name="Top" type="TEXT"/>
+            </Attributes>
+        </FEATUREITEM>
+    </FEATURE_ITEMS>
+    <DM_Settings>
+        <DM_Setting name="Software Version" value="23.0.1"/>
+        <DM_Setting name="adaptation_key_calculation_method" value="v1"/>
+        <DM_Setting name="avoid_special_chars" value="YES"/>
+        <DM_Setting name="avoid_special_chars_everywhere" value="NO"/>
+        <DM_Setting name="display_types_instead_of_object_types" value="YES"/>
+        <DM_Setting name="flatten_contained_items" value="YES"/>
+        <DM_Setting name="intermodular_connectivity_links" value="NO"/>
+        <DM_Setting name="library_dm" value="NO"/>
+        <DM_Setting name="support_solver_relative_paths" value="NO"/>
+        <DM_Setting name="target_point_property_name" value="Target Point"/>
+    </DM_Settings>
+</XMLData>
