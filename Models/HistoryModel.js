@@ -4,6 +4,10 @@ const historySchema = new mongoose.Schema({
         type: String,
         required:true
     },
+    user: {
+        type: String,
+        required:true
+    },
     lastDate: {
         type: Date,
         default:Date.now
