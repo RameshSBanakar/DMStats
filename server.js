@@ -89,7 +89,8 @@ app.post("/filesUpload", upload.single("xmlfile"), (req, res) => {
         return;
       }
       // Process the rows
-      dbFileData["Total Atrributes"]=rows.length
+      dbFileData["Total Atrributes"] = rows.length
+      dbFileData["Atrributes"] = rows;
     });
      db.all("SELECT * FROM _settings_", [], (err, rows) => {
        if (err) {
@@ -99,6 +100,22 @@ app.post("/filesUpload", upload.single("xmlfile"), (req, res) => {
        // Process the rows
        dbFileData["settings"] = rows;
      });
+    db.all("SELECT * FROM _values_", [], (err, rows) => {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      // Process the rows
+      dbFileData["values"] = rows.length;
+    });
+    db.all("SELECT * FROM _typed_values_", [], (err, rows) => {
+      if (err) {
+        console.error(err.message);
+        return;
+      }
+      // Process the rows
+      dbFileData["typedValues"] = rows.length;
+    });
     db.close((err) => {
       const jsonString = JSON.stringify(dbFileData);
       console.log(jsonString);
