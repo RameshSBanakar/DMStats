@@ -55,18 +55,22 @@ app.post("/filesUpload", upload.single("xmlfile"), (req, res) => {
           return;
         }
         // Process the rows
-        let totalCountOfObjects={}
+        let totalCountOfObjects = {}
+        let totalObjects=0
         rows.forEach((row) => {
           if (row._object_type_ in totalCountOfObjects) {
             totalCountOfObjects[row._object_type_] =
-              totalCountOfObjects[row._object_type_]+1;
+              totalCountOfObjects[row._object_type_] + 1;
+            totalObjects=totalObjects+1
           } else {
-             totalCountOfObjects[row._object_type_]=1;
+            totalCountOfObjects[row._object_type_] = 1;
+             totalObjects = totalObjects + 1;
           }
         });
         // console.log(totalCountOfObjects);
         // const jsonString = JSON.stringify(totalCountOfObjects);
-        dbFileData["totalCountOfObjects"]=totalCountOfObjects;
+        dbFileData["totalCountOfObjects"] = totalCountOfObjects;
+        dbFileData["totalObjects"] = totalObjects;
        
       }
     );
