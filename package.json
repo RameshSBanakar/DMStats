@@ -15,6 +15,6 @@
     "xml-js": "^1.6.11"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   }
 }
