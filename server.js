@@ -146,7 +146,7 @@ app.post("/filesUpload", upload.single("xmlfile"), (req, res) => {
   }
 
 });
-
+app.use("/client", historyRoute);
 app.use("/auth", authRouter);
 app.use("/history", historyRoute);
 
