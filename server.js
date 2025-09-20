@@ -14,7 +14,7 @@ const historyRoute = require("./Routes/HistoryRouter"
 dotenv.config({ path: "./config/config.env" });
 connectDb();
 const app = express();
-app.use(cors())
+app.use(cors("*"))
 app.use(express.json())
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
